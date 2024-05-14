@@ -19,20 +19,31 @@ namespace Factorial
 
         private async void btnCalcular_Click(object sender, EventArgs e)
         {
-            int[] numbers = { 5, 6, 7, 8, 10, };
-            foreach (int number in numbers)
+            List<int> numbers = new List<int>();
+            string input = txtNumbers.Text;
+            foreach (string number in input.Split(","))
             {
-                Task<long> task = Task.Run(() => CalculateFactorial (number));
-                long result = await task;
+               numbers.Add(int.Parse(number));
+            }
+            Task<long>[] tasks = new Task<long>[numbers.Count];
+            
+            for(int i = 0; i < numbers.Count; i++)
+            {
+                int num = numbers[i];
+                tasks[i] = Task.Run(() => CalculateFactorial(num));
+            }
+            long[] result = await Task.WhenAll(tasks);
 
-                MessageBox.Show($"Factorial de {number} : {result}");
+            for(int i=0; i < result.Length; i++)
+            {
+                MessageBox.Show($"El Factorial de {numbers[i]} es {result[i]}");
             }
         }
 
         private long CalculateFactorial(int number)
         {
             long factorial = 1;
-            for(int i = 1; i <= number; i++)
+            for (int i = 1; i <= number; i++)
             {
                 factorial *= i;
             }

@@ -30,20 +30,21 @@
         {
             label1 = new Label();
             btnCalcular = new Button();
+            txtNumbers = new TextBox();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(52, 81);
+            label1.Location = new Point(42, 95);
             label1.Name = "label1";
-            label1.Size = new Size(109, 20);
+            label1.Size = new Size(339, 20);
             label1.TabIndex = 0;
-            label1.Text = "EL Factorial es :";
+            label1.Text = "INGRESE EL NUMERO A CALCULAR SU FACTORIAL";
             // 
             // btnCalcular
             // 
-            btnCalcular.Location = new Point(63, 155);
+            btnCalcular.Location = new Point(87, 235);
             btnCalcular.Name = "btnCalcular";
             btnCalcular.Size = new Size(212, 69);
             btnCalcular.TabIndex = 1;
@@ -51,11 +52,19 @@
             btnCalcular.UseVisualStyleBackColor = true;
             btnCalcular.Click += btnCalcular_Click;
             // 
+            // txtNumbers
+            // 
+            txtNumbers.Location = new Point(130, 131);
+            txtNumbers.Name = "txtNumbers";
+            txtNumbers.Size = new Size(131, 27);
+            txtNumbers.TabIndex = 2;
+            // 
             // Factorial
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(449, 389);
+            Controls.Add(txtNumbers);
             Controls.Add(btnCalcular);
             Controls.Add(label1);
             Name = "Factorial";
@@ -68,5 +77,6 @@
 
         private Label label1;
         private Button btnCalcular;
+        private TextBox txtNumbers;
     }
 }
